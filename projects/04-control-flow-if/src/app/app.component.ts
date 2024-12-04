@@ -11,15 +11,30 @@ import { AccountInfo } from './account-info';
       <section class="membership-info">
         <p>
           <!-- name -->
-          {{ '' }}
+          {{ account.name }}
         </p>
-        <p>Valid Thru: {{ '' }}</p>
-        <p>CVV: {{ '' }}</p>
+        <p>Valid Thru: {{ account.validThru }}</p>
+        <p>CVV: {{ account.CVV }}</p>
         <p>
+          @switch (account.membershipStatus) {
+            @case ('gold') { 
+              <span class="badge gold">Gold</span>
+            }
+            @case ('platinum') {
+              <span class="badge platinum">Platinum</span>
+            }
+            @default {
+              <span class="badge silver ">Silver</span>
+            }
+          }
           <!-- membership status -->
-          <span class="badge gold">Gold</span>
-          <span class="badge platinum">Platinum</span>
-          <span class="badge silver">Silver</span>
+          <!-- @if (account.membershipStatus == 'gold') {
+            <span class="badge gold">Gold</span>
+          } @else if (account.membershipStatus == 'silver') {
+            <span class="badge silver">Silver</span>
+          } @else{
+            <span class="badge platinum">Platinum</span>
+          } -->
         </p>
       </section>
     </article>
